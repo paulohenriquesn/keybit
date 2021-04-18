@@ -22,6 +22,10 @@ Keybit é um jogo browser estilo Battle Royale que coloca 2 ou mais jogadores un
   - Socket IO Client
   - Styled Components
 
+<br/>
+
+> **Encontrou um bug ou algo a melhorar? Abra uma [issue](https://github.com/trindadematheus/keybit/issues)**
+
 
 <br/>
 
