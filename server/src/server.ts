@@ -1,13 +1,19 @@
-import express from 'express'
-import cors from 'cors'
-import { Socket } from 'socket.io'
+import App from './app'
+require('dotenv').config()
 
+export const ServerApp = new App();
+
+export const Server_PORT = process.env.PORT;
+
+ServerApp.server.listen(Server_PORT, () => {
+  console.log('Server Initialized 🚀');
+})
+
+
+/*
 import Room, { RoomStatus } from './entities/room'
 import Player from './entities/player'
 
-const app = express()
-app.use(express.json())
-app.use(cors())
 
 const rooms = new Map()
 interface JoinRoom {
@@ -169,3 +175,4 @@ io.on('connection', async (socket: Socket) => {
 http.listen(process.env.PORT || 3333, () => {
   console.log('🚀 | Socket server started')
 })
+*/
