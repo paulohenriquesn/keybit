@@ -33,7 +33,7 @@ export default function Chat() {
   }
 
   function handleInvite() {
-    copy(`http://localhost:3000${router.asPath}`);
+    copy(`https://keybit.wemakean.com${router.asPath}`);
     toast("link copiado com sucesso", {
       icon: "🥳",
     });

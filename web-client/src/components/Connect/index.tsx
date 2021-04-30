@@ -12,6 +12,8 @@ export default function Connect() {
   const router = useRouter();
   const { id } = router.query;
 
+  console.log(id)
+
   function handleJoinRoom(e: any) {
     e.preventDefault();
 
