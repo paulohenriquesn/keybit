@@ -61,8 +61,17 @@ export const joinRoom = (data: IJoinRoom, b: any, socket: Socket) => {
 
 export const Attack = (me: any, room: any, socket: Socket) => {
     const alivePlayers = Object.values(room.alivePlayers)
-    const randomPlayer: any = alivePlayers[Math.floor(Math.random() * alivePlayers.length)];
-    const alivePlayer = room.alivePlayers[randomPlayer.id]
+
+    let getRandomPlayerAlive = () => {
+        const randomPlayer: any = alivePlayers[Math.floor(Math.random() * alivePlayers.length)];
+        return room.alivePlayers[randomPlayer.id]
+    }
+
+    var alivePlayer = getRandomPlayerAlive();
+
+    while (alivePlayer.username == me.username) {
+        alivePlayer = getRandomPlayerAlive();
+    }
 
     alivePlayer.setHp(alivePlayer.hp - 4);
     me.setCombo(me.combo + 1);
@@ -92,8 +101,9 @@ export const Attack = (me: any, room: any, socket: Socket) => {
             room.setStatus(RoomStatus.WAITING)
             socket.in(room.id).emit('UPDATE-ROOM', room);
         }, 10000)
-
         return;
     }
+
+    socket.in(room.id).emit('UPDATE-ROOM', room);
 
 }

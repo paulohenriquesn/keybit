@@ -17,7 +17,7 @@ const ConnectionContext = createContext<ConnectionContextProps | null>(null);
 export function ConnectionProvider({ children }: ConnectionProviderProps) {
   const [ping, setPing] = useState(0);
   const [socket, setSocket] = useState<Socket>(() => {
-    const socketIO = io("http://127.0.0.1:3333/");
+    const socketIO = io("https://api.wemakean.com/", { secure: true });
 
     return socketIO;
   });

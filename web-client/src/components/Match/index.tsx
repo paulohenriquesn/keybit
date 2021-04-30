@@ -10,7 +10,7 @@ import * as S from "./styles";
 export default function Match() {
   const [key, setKey] = useState("");
 
-  const { attackEnemy, resetCombo, me, room } = useRoom();
+  const { attackEnemy, me, room } = useRoom();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLDivElement>(null);
@@ -39,7 +39,7 @@ export default function Match() {
         }
       );
     } else {
-      resetCombo();
+      //resetCombo();
     }
   }
 

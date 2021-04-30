@@ -27,9 +27,5 @@ export const ReqAttackEnemy = (data: any, b: any, socket: Socket) => {
     const SocketConnection = ServerApp.socket;
     const room: Room = rooms.get(data.roomId);
     const playerRequested = room.players[socket.id];
-
-    console.log(room, playerRequested)
-
     playerAttack(playerRequested, room, SocketConnection)
-
 }

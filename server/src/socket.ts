@@ -8,12 +8,19 @@ require('dotenv').config()
 
 const Server_PORT = process.env.PORT;
 
+var fs = require('fs')
+var https = require('https');
+
+var privateKey = fs.readFileSync(__dirname + '/ssl/server.key', 'utf8');
+var certificate = fs.readFileSync(__dirname + '/ssl/server.crt', 'utf8');
+
+var credentials = { key: privateKey, cert: certificate };
 
 import { latency, disconnect } from './controllers/socket'
 
 import { onUserMessage, joinRoom, setConnectedRoomId } from './controllers/player';
 
-import { ReqStartMatch } from './controllers/frontend';
+import { ReqAttackEnemy, ReqStartMatch } from './controllers/frontend';
 
 export interface socketEvent {
     function: any
@@ -31,6 +38,9 @@ const SocketEvents: socketEvent[] = [
 const FrontEndEvents: socketEvent[] = [
     {
         function: ReqStartMatch,
+    },
+    {
+        function: ReqAttackEnemy
     }
 ]
 
@@ -45,15 +55,20 @@ const PlayerEvents: socketEvent[] = [
 
 
 export const createSocketConnection = (express_server: Express) => {
-    const http = require('http').Server(express_server)
+    
+    const https = require('https').Server(credentials,express_server)
 
-    const socketConnection = require('socket.io')(http, {
+    const socketConnection = require('socket.io')(https, {
         pingInterval: 5000,
         cors: {
             origin: "*",
             methods: ["GET", "POST"]
         }
-    }).listen(Server_PORT)
+    })
+
+    https.listen(Server_PORT,() => {
+        console.log('Servidor Initialized 🚀 http://keybit.wemakean.com/')
+    })
 
     return socketConnection;
 

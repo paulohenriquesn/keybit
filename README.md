@@ -40,3 +40,14 @@ Keybit é um jogo browser estilo Battle Royale que coloca 2 ou mais jogadores un
   <a href="https://www.linkedin.com/in/trindadematheus/">Linkedin</a> •
   <a href="https://matheustrindade.dev.br/">Site</a>
 </p>
+
+---
+
+<br />
+
+<p align="center">Contribuidor <b>Paulo Henrique</b> diretamente de <b>São Paulo.</b></p>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/paulohenriquesn/">Linkedin</a> •
+  <a href="https://paulohenriquesn.com/">Site</a>
+</p>

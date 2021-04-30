@@ -142,6 +142,7 @@ export function RoomProvider({ children }: RoomProviderProps) {
   }
 
   function startMatch() {
+    console.log('request attack')
     socket.emit("ReqStartMatch", {
       roomId: room?.id,
     });
