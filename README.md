@@ -12,7 +12,7 @@ Keybit é um jogo browser estilo Battle Royale que coloca 2 ou mais jogadores un
 
 ## Jogue agora
 
-A versão atual do jogo está disponivel em: <a href="keybit.wemakean.com">keybit.wemakean.com</a>
+A versão atual do jogo está disponivel em: <a href="http://keybit.wemakean.com">keybit.wemakean.com</a>
 
 <br/>
 
