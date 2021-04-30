@@ -82,6 +82,7 @@ export function RoomProvider({ children }: RoomProviderProps) {
       }
     });
 
+
     socket.on("new-message", (data: Message) => {
       setMessages([
         ...messages,
@@ -132,7 +133,7 @@ export function RoomProvider({ children }: RoomProviderProps) {
         },
       ]);
 
-      socket.emit("user-message", {
+      socket.emit("onUserMessage", {
         message,
         roomId: room?.id,
         player: me,
@@ -141,13 +142,13 @@ export function RoomProvider({ children }: RoomProviderProps) {
   }
 
   function startMatch() {
-    socket.emit("REQ-START-MATCH", {
+    socket.emit("ReqStartMatch", {
       roomId: room?.id,
     });
   }
 
   function attackEnemy() {
-    socket.emit("REQ-ATTACK-ENEMY", {
+    socket.emit("ReqAttackEnemy", {
       roomId: room?.id,
       target: me?.isAdmin ? "P2" : "P1",
     });

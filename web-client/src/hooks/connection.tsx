@@ -17,7 +17,7 @@ const ConnectionContext = createContext<ConnectionContextProps | null>(null);
 export function ConnectionProvider({ children }: ConnectionProviderProps) {
   const [ping, setPing] = useState(0);
   const [socket, setSocket] = useState<Socket>(() => {
-    const socketIO = io("https://keybit-socket.herokuapp.com/");
+    const socketIO = io("http://127.0.0.1:3333/");
 
     return socketIO;
   });
