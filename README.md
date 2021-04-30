@@ -4,7 +4,7 @@
 
 ## Jogue agora
 
-A versão atual do jogo está disponivel em: <a href="http://keybit.wemakean.com">keybit.wemakean.com</a>
+A versão atual do jogo está disponivel em: <a href="http://keybit.wemakean.com">https://keybit.wemakean.com</a>
 
 <br />
 
