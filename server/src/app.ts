@@ -7,6 +7,7 @@ import SocketConnection from './socket'
 
 import { Server_PORT } from './server'
 
+var timeout = require('connect-timeout')
 var path = require('path');
 
 export class App {
@@ -22,6 +23,7 @@ export class App {
     async middlewares() {
         this.server.use(express.json())
         this.server.use(cors())
+        this.server.use(timeout('5s'))
         this.socket = createSocketConnection(this.server)
 
     }

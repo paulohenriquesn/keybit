@@ -24,15 +24,19 @@ export const createRoom = (roomId: string, adminPlayer: Player) => {
 
 export const startMatch = (data: any) => {
     const room: Room = rooms.get(data.roomId);
-    room.setStatus(RoomStatus.STARTING);
-    room.resetPlayersAttributes();
-    room.resetAlivePlayersList();
+    if (room) {
+        room.setStatus(RoomStatus.STARTING);
+        room.resetPlayersAttributes();
+        room.resetAlivePlayersList();
+    }
     return room;
 }
 
 export const changeState = async (room: any, status: RoomStatus, io: Socket,) => {
-    room.setStatus(status);
-    room.setDate();
-    io.in(room.id).emit('UPDATE-ROOM', room);
+    if (room) {
+        room.setStatus(status);
+        room.setDate();
+        io.in(room.id).emit('UPDATE-ROOM', room);
+    }
 }
 

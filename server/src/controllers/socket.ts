@@ -14,17 +14,24 @@ export const latency = (startTime: any, cb: any) => {
 
 export const disconnect = (a: any, b: any, socket: Socket) => {
     const SocketConnection = ServerApp.socket;
+    
+    rooms.forEach((role, key) => {
+        if (role.players[socket.id] != undefined) {
 
-    const room: Room = rooms.get(getConnectedRoomId())
-    if (!room) return;
-
-    try {
-        room.removePlayer(socket.id)
-    } catch {
-        if (Object.values(room.players).length === 0) {
-            rooms.delete(room.id)
+            const room: Room = rooms.get(key)
+            if (!room) return;
+        
+            try {
+                room.removePlayer(socket.id)
+            } catch {
+                if (Object.values(room.players).length === 0) {
+                    rooms.delete(room.id)
+                }
+            }
+            SocketConnection.in(room.id).emit('player-disconnected', room);
         }
-    }
+    })
 
-    SocketConnection.in(room.id).emit('player-disconnected', room);
+
+   
 }

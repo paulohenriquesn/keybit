@@ -28,8 +28,6 @@ export default class Room {
   }
 
   removePlayer(id: string) {
-    console.log(id)
-    console.log(this.players)
     if (this.players[id].isAdmin) {
       const first = Object.values(this.players)[1];
 

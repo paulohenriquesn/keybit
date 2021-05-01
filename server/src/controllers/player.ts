@@ -6,6 +6,11 @@ import Room, { RoomStatus } from '../entities/room'
 
 import { rooms } from './room'
 
+function getRandomItem(set: any) {
+    let items = Array.from(set);
+    return items[Math.floor(Math.random() * items.length)];
+}
+
 export let connectedRoomId: string;
 
 interface IMessage {
@@ -59,6 +64,32 @@ export const joinRoom = (data: IJoinRoom, b: any, socket: Socket) => {
 
 }
 
+export const joinRandomRoom = (data: IJoinRoom, b: any, socket: Socket) => {
+
+    const SocketConnection = ServerApp.socket;
+
+    let RandomRoom: any = getRandomItem(rooms)
+
+    if (RandomRoom != undefined) {
+
+        RandomRoom.forEach((a: any, b: any) => {
+            let roomId = a.id;
+
+            const room: Room = rooms.get(roomId);
+
+            if (room) {
+                if (Object.keys(room.players).length > 0) {
+                    SocketConnection.to(socket.id).emit('joinedRandomRoom', { room })
+                } else {
+                    rooms.delete(room.id);
+                }
+            }
+
+        })
+    }
+
+}
+
 export const Attack = (me: any, room: any, socket: Socket) => {
     const alivePlayers = Object.values(room.alivePlayers)
 
@@ -69,7 +100,7 @@ export const Attack = (me: any, room: any, socket: Socket) => {
 
     var alivePlayer = getRandomPlayerAlive();
 
-    while (alivePlayer.username == me.username) {
+    while (alivePlayer.id == me.id) {
         alivePlayer = getRandomPlayerAlive();
     }
 
