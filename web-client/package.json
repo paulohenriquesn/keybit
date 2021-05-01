@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p 7475"
+    "start": "next start"
   },
   "dependencies": {
     "@ramonak/react-progress-bar": "^2.1.8",
@@ -13,8 +13,8 @@
     "next": "latest",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-hot-toast": "^1.0.2",
     "react-icons": "^4.2.0",
+    "react-toast": "^1.0.3",
     "react-toastify": "^7.0.3",
     "socket.io-client": "^4.0.0",
     "styled-components": "^5.0.0",

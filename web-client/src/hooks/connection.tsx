@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { io, Socket } from "socket.io-client";
+import { toast } from "react-toast";
 
 interface ConnectionProviderProps {
   children: React.ReactNode;
@@ -17,7 +18,12 @@ const ConnectionContext = createContext<ConnectionContextProps | null>(null);
 export function ConnectionProvider({ children }: ConnectionProviderProps) {
   const [ping, setPing] = useState(0);
   const [socket, setSocket] = useState<Socket>(() => {
-    const socketIO = io("https://api.wemakean.com/", { secure: true });
+    const socketIO = io("https://api.wemakean.com", { secure: true });
+
+    toast("🤖 conectado ao servidor", {
+      backgroundColor: "#323131",
+      color: "#DDE2E8",
+    });
 
     return socketIO;
   });

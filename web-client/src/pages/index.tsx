@@ -6,15 +6,20 @@ import { useRoom } from "../hooks/room";
 
 export default function Home() {
   const [nickname, setNickname] = useState("");
-
-  const { joinRoom } = useRoom();
+  const { joinRoom,joinRandomRoom } = useRoom();
 
   function handleCreateRoom(e: any) {
     e.preventDefault();
 
-    joinRoom({
+      joinRoom({
+        nickname: nickname || "anônimo",
+        roomId: uuidv4(),
+      });
+  }
+
+  function handleConnectRandomRoom() {
+    joinRandomRoom({
       nickname: nickname || "anônimo",
-      roomId: uuidv4(),
     });
   }
 
@@ -29,7 +34,7 @@ export default function Home() {
           placeholder="digite seu nickname"
         />
         <button type="submit">criar nova sala</button>
-        {/* <button onClick={handleCreateRoom}>encontrar partida</button> */}
+        <button type="button" onClick={handleConnectRandomRoom}>encontrar partida</button>
       </S.Container>
     </>
   );
