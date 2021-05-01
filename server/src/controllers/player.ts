@@ -78,7 +78,7 @@ export const joinRandomRoom = (data: IJoinRoom, b: any, socket: Socket) => {
             const room: Room = rooms.get(roomId);
 
             if (room) {
-                if (Object.keys(room.players).length > 0) {
+                if (Object.keys(room.players).length > 0 && room.status == RoomStatus.WAITING) {
                     SocketConnection.to(socket.id).emit('joinedRandomRoom', { room })
                 } else {
                     rooms.delete(room.id);
