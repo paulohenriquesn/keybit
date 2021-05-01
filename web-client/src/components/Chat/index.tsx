@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { format } from "date-fns";
-import toast from "react-hot-toast";
+import { toast } from "react-toast";
 import { useRouter } from "next/router";
 
 import { useRoom } from "../../hooks/room";
@@ -33,9 +33,11 @@ export default function Chat() {
   }
 
   function handleInvite() {
-    copy(`https://keybit.wemakean.com${router.asPath}`);
-    toast("link copiado com sucesso", {
-      icon: "🥳",
+    copy(`http://keybit.wemakean.com${router.asPath}`);
+
+    toast("🥳 link copiado com sucesso", {
+      backgroundColor: "#0f1317",
+      color: "#DDE2E8",
     });
   }
 

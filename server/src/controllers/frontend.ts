@@ -24,8 +24,10 @@ export const ReqStartMatch = (data: any, b: any, socket: Socket) => {
 }
 
 export const ReqAttackEnemy = (data: any, b: any, socket: Socket) => {
-    const SocketConnection = ServerApp.socket;
-    const room: Room = rooms.get(data.roomId);
-    const playerRequested = room.players[socket.id];
-    playerAttack(playerRequested, room, SocketConnection)
+    
+        const SocketConnection = ServerApp.socket;
+        const room: Room = rooms.get(data.roomId);
+        const playerRequested = room.players[socket.id];
+
+       playerAttack(playerRequested, room, SocketConnection)
 }

@@ -18,7 +18,7 @@ var credentials = { key: privateKey, cert: certificate };
 
 import { latency, disconnect } from './controllers/socket'
 
-import { onUserMessage, joinRoom, setConnectedRoomId } from './controllers/player';
+import { onUserMessage, joinRoom, setConnectedRoomId, joinRandomRoom } from './controllers/player';
 
 import { ReqAttackEnemy, ReqStartMatch } from './controllers/frontend';
 
@@ -50,13 +50,16 @@ const PlayerEvents: socketEvent[] = [
     },
     {
         function: joinRoom
+    },
+    {
+        function: joinRandomRoom
     }
 ]
 
 
 export const createSocketConnection = (express_server: Express) => {
-    
-    const https = require('https').Server(credentials,express_server)
+
+    const https = require('https').Server(credentials, express_server)
 
     const socketConnection = require('socket.io')(https, {
         pingInterval: 5000,
@@ -66,7 +69,7 @@ export const createSocketConnection = (express_server: Express) => {
         }
     })
 
-    https.listen(Server_PORT,() => {
+    https.listen(Server_PORT, () => {
         console.log('Servidor Initialized 🚀 http://keybit.wemakean.com/')
     })
 
@@ -77,28 +80,28 @@ export const createSocketConnection = (express_server: Express) => {
 export default () => {
 
     ServerApp.socket.on('connection', (socket: Socket) => {
-
         setConnectedRoomId('');
 
         SocketEvents.map((event) => {
             socket.on(event.function.name, (a: any, b: any) => {
+                console.log(event)
                 event.function(a, b, socket)
             })
         })
 
         FrontEndEvents.map((event) => {
             socket.on(event.function.name, (a: any, b: any) => {
+                console.log(event)
                 event.function(a, b, socket)
             })
         })
 
         PlayerEvents.map((event) => {
             socket.on(event.function.name, (a: any, b: any) => {
-                event.function(a, b, socket)
+                console.log(event)
+                    event.function(a, b, socket)
             })
         })
-
-        
 
     })
 

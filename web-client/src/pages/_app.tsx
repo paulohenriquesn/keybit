@@ -1,5 +1,5 @@
 import { AppProps } from "next/app";
-import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toast";
 
 import GlobalStyles from "../styles/global";
 import "../styles/font.css";
@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </RoomProvider>
       </ConnectionProvider>
 
-      <Toaster position="bottom-center" reverseOrder={false} />
+      <ToastContainer delay={3000} position="bottom-center" />
       <GlobalStyles />
     </>
   );

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-toast";
 import { useRouter } from "next/router";
 
 import { useConnection } from "./connection";
@@ -7,6 +7,10 @@ import { Player, Room, Message } from "../@types/entities";
 
 interface RoomProviderProps {
   children: React.ReactNode;
+}
+
+interface JoinRandomRoom {
+  nickname: string;
 }
 
 interface JoinRoom {
@@ -21,6 +25,7 @@ interface RoomContextProps {
   counter: number;
   winner: string;
   joinRoom(data: JoinRoom): void;
+  joinRandomRoom(data: JoinRandomRoom): void;
   sendMessage(message: string): void;
   startMatch(): void;
   attackEnemy(): void;
@@ -40,49 +45,10 @@ export function RoomProvider({ children }: RoomProviderProps) {
   const router = useRouter();
 
   useEffect(() => {
-    socket.on("createdRoom", (data: any) => {
-      setRoom(data.room);
-      setMe(data.player);
+    events();
+  }, []);
 
-      router.push(`/match/${data.room.id}`);
-      toast("sala criada com sucesso", {
-        icon: "🎉",
-      });
-    });
-
-    socket.on("joined", (data: any) => {
-      setRoom(data.room);
-      setMe(data.player);
-      toast("você entrou na sala", {
-        icon: "🥳",
-      });
-    });
-
-    socket.on("new-player", (data: Room) => {
-      setRoom(data);
-      toast("um player se conectou a sala", {
-        icon: "💥",
-      });
-    });
-
-    socket.on("player-disconnected", (data: Room) => {
-      setRoom(data);
-
-      if (!me) return;
-
-      setMe(data.players[me.id]);
-      toast("um player saiu", {
-        icon: "🏃‍♂️",
-      });
-
-      if (data.players[me.id].isAdmin) {
-        toast("você agora é o administrador da sala", {
-          icon: "🔰",
-        });
-      }
-    });
-
-
+  useEffect(() => {
     socket.on("new-message", (data: Message) => {
       setMessages([
         ...messages,
@@ -94,6 +60,65 @@ export function RoomProvider({ children }: RoomProviderProps) {
         },
       ]);
     });
+
+  }, [me, messages])
+
+  function events() {
+    socket.on("createdRoom", (data: any) => {
+      setRoom(data.room);
+      setMe(data.player);
+
+      router.push(`/match/${data.room.id}`);
+      toast("🎉sala criada com sucesso", {
+        backgroundColor: "#0f1317",
+        color: "#DDE2E8",
+      });
+    });
+
+    socket.on('joinedRandomRoom', (data: any) => {
+      router.push(`/match/${data.room.id}`);
+      toast("🥳 Sala encontrada", {
+        backgroundColor: "#0f1317",
+        color: "#DDE2E8",
+      });
+    })
+
+    socket.on("joined", (data: any) => {
+      setRoom(data.room);
+      setMe(data.player);
+      toast("🥳 você entrou na sala", {
+        backgroundColor: "#0f1317",
+        color: "#DDE2E8",
+      });
+    });
+
+    socket.on("new-player", (data: Room) => {
+      setRoom(data);
+      toast("💥 um player se conectou a sala", {
+        backgroundColor: "#0f1317",
+        color: "#DDE2E8",
+      });
+    });
+
+    socket.on("player-disconnected", (data: Room) => {
+      setRoom(data);
+
+      if (!me) return;
+
+      setMe(data.players[me.id]);
+      toast("🏃‍♂️ um player saiu", {
+        backgroundColor: "#0f1317",
+        color: "#DDE2E8",
+      });
+
+      if (data.players[me.id].isAdmin) {
+        toast("🔰 você agora é o administrador da sala", {
+          backgroundColor: "#0f1317",
+          color: "#DDE2E8",
+        });
+      }
+    });
+
 
     socket.on("UPDATE-ROOM", (updatedRoom: Room) => {
       setCounter(5);
@@ -112,7 +137,7 @@ export function RoomProvider({ children }: RoomProviderProps) {
       setRoom(data.room);
       setWinner(data.winner);
     });
-  }, [messages, me]);
+  }
 
   function joinRoom(data: JoinRoom) {
     socket.emit("joinRoom", {
@@ -142,7 +167,6 @@ export function RoomProvider({ children }: RoomProviderProps) {
   }
 
   function startMatch() {
-    console.log('request attack')
     socket.emit("ReqStartMatch", {
       roomId: room?.id,
     });
@@ -162,11 +186,18 @@ export function RoomProvider({ children }: RoomProviderProps) {
     });
   }
 
+  function joinRandomRoom(data: JoinRandomRoom) {
+    socket.emit("joinRandomRoom", {
+      nickname: data.nickname,
+    });
+  }
+
   return (
     <RoomContext.Provider
       value={{
         me,
         joinRoom,
+        joinRandomRoom,
         room,
         sendMessage,
         messages,
@@ -191,3 +222,4 @@ export function useRoom(): RoomContextProps {
 
   return context;
 }
+
