@@ -1,39 +1,50 @@
-<p align="center" >
-<img src="assets/title.png" width="800" />
-</p>
 
-## Jogue agora
+![Logo](https://github.com/trindadematheus/keybit/blob/master/assets/title.png?raw=true)
 
-A versão atual do jogo está disponivel em: <a href="http://keybit.wemakean.com">https://keybit.wemakean.com</a>
+    
+# About
 
-<br />
+Keybit is a browser game like battle royale mode that put 2 players or more against each other in a arena to know who type more fast, the keys will show on the screen press it more fast that you can doing it you can attack the others players and survive, the last survivor won.
 
-## Sobre o jogo
 
-Keybit é um jogo browser estilo Battle Royale que coloca 2 ou mais jogadores uns contra os outros em uma luta para ver quem digita mais rápido. Letras aparecem na tela, pressione ela o mais rápido possivel e dê dano nos seus oponentes o último que restar, vence.
+## Play with us!
 
-<br/>
+The Official version was published on the Internet (<a href="http://keybit.wemakean.com">click here to play</a>)
 
-## Principais tecnologias
 
-- **Server**
-  - Express
-  - Socket IO
+
+## Tech Stack
+
+**Cleent:** NextJS, Socket IO Client, Styled Components
+
+**Server:** Node, Express, Socket IO
+
   
+## Version Manager 
 
-- **WEB Client**
-  - Nextjs
-  - Socket IO Client
-  - Styled Components
 
-<br/>
+Beta (It's code that @paulohenriquesn is coding and it's not released to "Released Version" yet)
 
-> **Encontrou um bug ou algo a melhorar? Abra uma [issue](https://github.com/trindadematheus/keybit/issues)**
+```bash 
+  git clone github.com/paulohenriquesn/keybit.git
+```
+    
+Released (It's the Official code.)
 
-<br/>
+```bash 
+  git clone github.com/trindadematheus/keybit.git
+```
+    
+## Issue
 
-## Contribuidores
+Did you find any bug or something that could be on game? Open an [Issue](https://github.com/trindadematheus/keybit/issues)
+
+  
+## Contributors
+
+Contributions are always welcome!
 
 | [<img alt="trindadematheus" src="https://github.com/trindadematheus.png?size=115" width="115"><br><sub>Matheus Trindade</sub>](https://github.com/trindadematheus) | [<img alt="paulohenriquesn" src="https://github.com/paulohenriquesn.png?size=115" width="115"><br><sub>Paulo Henrique</sub>](https://github.com/paulohenriquesn) |
 | :---: |:---: |
 
+  
