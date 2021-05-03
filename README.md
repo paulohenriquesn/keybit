@@ -1,59 +1,50 @@
-<p align="center" >
-<img src="assets/title.png" width="800" />
-</p>
 
-<br />
+![Logo](https://github.com/trindadematheus/keybit/blob/master/assets/title.png?raw=true)
 
-## Sobre o jogo
+    
+# About
 
-Keybit é um jogo browser estilo Battle Royale que coloca 2 ou mais jogadores uns contra os outros em uma luta para ver quem digita mais rápido. Letras aparecem na tela, pressione ela o mais rápido possivel e dê dano nos seus oponentes o último que restar, vence.
+Keybit is a browser game like battle royale mode that put 2 players or more against each other in a arena to know who type more fast, the keys will show on the screen press it more fast that you can doing it you can attack the others players and survive, the last survivor won.
 
-<br/>
 
-## Jogue agora
+## Play with us!
 
-A versão atual do jogo está disponivel em: <a href="http://keybit.wemakean.com">keybit.wemakean.com</a>
+The Official version was published on the Internet (<a href="http://keybit.wemakean.com">click here to play</a>)
 
-<br/>
 
-## Principais tecnologias
 
-- **Server**
-  - Express
-  - Socket IO
+## Tech Stack
+
+**Cleent:** NextJS, Socket IO Client, Styled Components
+
+**Server:** Node, Express, Socket IO
+
   
-
-- **WEB Client**
-  - Nextjs
-  - Socket IO Client
-  - Styled Components
-
-<br/>
-
-> **Encontrou um bug ou algo a melhorar? Abra uma [issue](https://github.com/trindadematheus/keybit/issues)**
+## Version Manager 
 
 
-<br/>
+Beta (It's code that @paulohenriquesn is coding and it's not released to "Released Version" yet)
 
----
+```bash 
+  git clone github.com/paulohenriquesn/keybit.git
+```
+    
+Released (It's the Official code.)
 
-<br />
+```bash 
+  git clone github.com/trindadematheus/keybit.git
+```
+    
+## Issue
 
-<p align="center">Feito com <b>♥</b> por <b>Matheus Trindade</b> diretamente de <b>Salvador-BA</b></p>
+Did you find any bug or something that could be on game? Open an [Issue](https://github.com/trindadematheus/keybit/issues)
 
-<p align="center">
-  <a href="https://twitter.com/trnddev">Twitter</a> •
-  <a href="https://www.linkedin.com/in/trindadematheus/">Linkedin</a> •
-  <a href="https://matheustrindade.dev.br/">Site</a>
-</p>
+  
+## Contributors
 
----
+Contributions are always welcome!
 
-<br />
+| [<img alt="trindadematheus" src="https://github.com/trindadematheus.png?size=115" width="115"><br><sub>Matheus Trindade</sub>](https://github.com/trindadematheus) | [<img alt="paulohenriquesn" src="https://github.com/paulohenriquesn.png?size=115" width="115"><br><sub>Paulo Henrique</sub>](https://github.com/paulohenriquesn) |
+| :---: |:---: |
 
-<p align="center">Contribuidor <b>Paulo Henrique</b> diretamente de <b>São Paulo.</b></p>
-
-<p align="center">
-  <a href="https://www.linkedin.com/in/paulohenriquesn/">Linkedin</a> •
-  <a href="https://paulohenriquesn.com/">Site</a>
-</p>
+  
