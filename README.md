@@ -6,6 +6,9 @@
 
 Keybit is a browser game like battle royale mode that put 2 players or more against each other in a arena to know who type more fast, the keys will show on the screen press it more fast that you can doing it you can attack the others players and survive, the last survivor won.
 
+<p align="center">
+<img src="https://github.com/paulohenriquesn/keybit/blob/v2/assets/keybit.gif?raw=true" width="340" height="340"/>
+</p>
 
 ## Play with us!
 
